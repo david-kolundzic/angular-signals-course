@@ -10,6 +10,7 @@ import {toObservable, toSignal, outputToObservable, outputFromObservable} from "
 
 @Component({
     selector: 'home',
+     
     imports: [
         MatTabGroup,
         MatTab,
@@ -19,10 +20,15 @@ import {toObservable, toSignal, outputToObservable, outputFromObservable} from "
     styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-    counter = 0;
-    
-    increment = () => this.counter++;
 
-    decrement = () => this.counter--;
+    counter = signal(0);
+
+    increment() {
+        this.counter.set(this.counter() + 1);
+    }
+
+    decrement() {
+        this.counter.set(this.counter() - 1);
+    }
 
 }
